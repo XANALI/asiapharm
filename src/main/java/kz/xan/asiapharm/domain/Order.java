@@ -5,15 +5,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
+@Table(name = "orders")
 public class Order extends BaseEntity {
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "good_id")
     private Good good;
+
+    @Column(name = "description")
     private String description;
 
     @Builder
