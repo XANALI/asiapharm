@@ -26,11 +26,9 @@ public class Good extends BaseEntity {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @ManyToMany
-    @JoinTable(name = "good_category",
-            joinColumns = @JoinColumn(name = "good_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "good")
     private Set<Order> orders;

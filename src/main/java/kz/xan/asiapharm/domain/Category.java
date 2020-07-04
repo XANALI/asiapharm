@@ -20,7 +20,7 @@ public class Category extends BaseEntity {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "categories")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private Set<Good> goods;
 
     @ManyToOne
