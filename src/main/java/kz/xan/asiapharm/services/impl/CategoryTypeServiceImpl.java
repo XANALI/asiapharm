@@ -19,7 +19,7 @@ public class CategoryTypeServiceImpl implements CategoryTypeService {
 
     @Override
     public CategoryType findById(Long aLong) {
-        return categoryTypeRepository.findById(aLong);
+        return categoryTypeRepository.findById(aLong).orElse(null);
     }
 
     @Override

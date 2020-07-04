@@ -1,7 +1,7 @@
 package kz.xan.asiapharm.repositories;
 
 import kz.xan.asiapharm.domain.CategoryType;
-import kz.xan.asiapharm.services.CrudService;
+import org.springframework.data.repository.CrudRepository;
 
-public interface CategoryTypeRepository extends CrudService<CategoryType, Long> {
+public interface CategoryTypeRepository extends CrudRepository<CategoryType, Long> {
 }
