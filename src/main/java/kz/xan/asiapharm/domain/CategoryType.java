@@ -12,26 +12,22 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "categories")
-public class Category extends BaseEntity {
+@Table(name = "categoryTypes")
+public class CategoryType extends BaseEntity {
+
     @Column(name = "name")
     private String name;
 
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "categories")
-    private Set<Good> goods;
-
-    @ManyToOne
-    @JoinColumn(name = "categoryType_id")
-    private CategoryType categoryType;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoryType")
+    private Set<Category> categories;
 
     @Builder
-    public Category(Long Id, String name, String description, CategoryType categoryType) {
+    public CategoryType(Long Id, String name, String description) {
         super(Id);
         this.name = name;
         this.description = description;
-        this.categoryType = categoryType;
     }
 }
