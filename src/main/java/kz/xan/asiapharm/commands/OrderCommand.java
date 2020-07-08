@@ -1,7 +1,5 @@
 package kz.xan.asiapharm.commands;
 
-import kz.xan.asiapharm.domain.Good;
-import kz.xan.asiapharm.domain.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class OrderCommand {
-    private User user;
-    private Good good;
+    private UserCommand user;
+    private GoodCommand good;
     private String description;
 }
