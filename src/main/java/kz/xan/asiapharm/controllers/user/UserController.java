@@ -18,6 +18,6 @@ public class UserController {
     public String listUsers(Model model){
         model.addAttribute("users", userService.findAll());
 
-        return "users";
+        return "user/users";
     }
 }

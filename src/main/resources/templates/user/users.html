@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <!--/*/ <th:block th:include="layout/fragments.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+    <!--/*/ <th:block th:include="category/listCategory.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+</head>
+<body>
+    <section>
+        <header th:replace="layout/fragments.html :: header">
+        </header>
+        <main>
+            <section th:replace="user/listUser.html :: listUser(users=${users})">
+
+            </section>
+        </main>
+    </section>
+</body>
+</html>
