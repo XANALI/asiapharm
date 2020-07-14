@@ -18,6 +18,6 @@ public class GoodController {
     public String listGoods(Model model){
         model.addAttribute("goods", goodService.findAll());
 
-        return "goods";
+        return "good/goods";
     }
 }
