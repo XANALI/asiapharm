@@ -18,6 +18,6 @@ public class OrderController {
     public String listOrders(Model model){
         model.addAttribute("orders", orderService.findAll());
 
-        return "orders";
+        return "order/orders";
     }
 }
