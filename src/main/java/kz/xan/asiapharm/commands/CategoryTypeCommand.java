@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CategoryTypeCommand {
+public class CategoryTypeCommand extends BaseCommand {
     private String name;
     private String description;
 }

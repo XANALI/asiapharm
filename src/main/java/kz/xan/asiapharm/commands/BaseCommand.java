@@ -7,8 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class OrderCommand extends BaseCommand {
-    private UserCommand user;
-    private GoodCommand good;
-    private String description;
+public class BaseCommand {
+    protected Long Id;
 }

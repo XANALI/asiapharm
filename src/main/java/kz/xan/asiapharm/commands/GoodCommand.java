@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class GoodCommand {
+public class GoodCommand extends BaseCommand {
     private String name;
     private String description;
     private Integer price;

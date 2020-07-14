@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserCommand {
+public class UserCommand extends BaseCommand {
     private String firstName;
     private String lastName;
     private String username;
