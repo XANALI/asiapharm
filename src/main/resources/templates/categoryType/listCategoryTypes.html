@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="headerfiles">
+    <link rel="stylesheet" href="../../static/css/category/list_style.css" th:href="@{/css/category/list_style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <section class="container" th:fragment="listCategoryTypes (categoryTypes)">
+            <div class="cards">
+                <div class="card" th:each="categoryType : ${categoryTypes}">
+                    <div class="card-header">
+                        <a th:href="@{'/categoryType/' + ${categoryType.Id}}" th:text="${categoryType.name}">Жаропонижающие</a>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-description">
+                            <p th:text="${categoryType.description}">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Illo culpa recusandae, voluptatum iure dolorem officia beatae,
+                                vel earum, doloribus quod saepe quae totam esse deleniti.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
