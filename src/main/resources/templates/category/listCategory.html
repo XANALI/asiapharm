@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="headerfiles">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/css/category/list_style.css" th:href="@{/css/category/list_style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="container" th:fragment="listCategory (categories)">
+        <div class="cards">
+            <div class="card" th:each="category : ${categories}">
+                <div class="card-header">
+                    <a th:href="@{'/category/' + ${category.Id}}" th:text="${category.name}">Жаропонижающие</a>
+                </div>
+                <div class="card-content">
+                    <div class="card-description">
+                        <p th:text="${category.description}">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Illo culpa recusandae, voluptatum iure dolorem officia beatae, 
+                            vel earum, doloribus quod saepe quae totam esse deleniti.
+                        </p>
+                    </div>
+                    <div class="card-type" th:text="${category.categoryType.name}">Лекарственные средства</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
