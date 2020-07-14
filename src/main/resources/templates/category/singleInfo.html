@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Info</title>
+    <!--/*/ <th:block th:include="layout/fragments.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+    <!--/*/ <th:block th:include="category/listCategory.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+</head>
+<body>
+    <!--/*@thymesVar id="categoryCommand" type="kz.xan.asiapharm.commands.CategoryCommand"*/-->
+    <section>
+        <header th:replace="layout/fragments.html :: header">
+        </header>
+        <main>
+            <section class="container">
+                <form method="POST" action="/category/changeCategory" th:action="@{/category/changeCategory}" th:object="${categoryCommand}">
+                    <input type="hidden" th:field="*{Id}">
+                    <div class="card">
+                        <div class="card-header">
+                            <input type="text" th:field="*{name}">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-description">
+                                <input type="text" th:field="*{description}">
+                            </div>
+                        </div>
+                        <div>
+                            <input type="hidden" th:field="*{categoryType.Id}">
+                            <input type="text" th:field="*{categoryType.name}">
+                            <input type="text" th:field="*{categoryType.description}">
+                        </div>
+                        <div>
+                            <input type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </section>
+</body>
+</html>
