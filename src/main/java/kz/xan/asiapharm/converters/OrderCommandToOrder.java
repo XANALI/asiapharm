@@ -27,6 +27,7 @@ public class OrderCommandToOrder implements Converter<OrderCommand, Order> {
         }
 
         final Order order = new Order();
+        order.setId(orderCommand.getId());
         order.setDescription(order.getDescription());
         order.setUser(userCommandToUser.convert(orderCommand.getUser()));
         order.setGood(goodCommandToGood.convert(orderCommand.getGood()));

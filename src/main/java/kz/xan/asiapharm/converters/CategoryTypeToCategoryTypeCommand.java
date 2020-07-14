@@ -19,6 +19,7 @@ public class CategoryTypeToCategoryTypeCommand implements Converter<CategoryType
         }
 
         final CategoryTypeCommand categoryTypeCommand = new CategoryTypeCommand();
+        categoryTypeCommand.setId(categoryType.getId());
         categoryTypeCommand.setName(categoryType.getName());
         categoryTypeCommand.setDescription(categoryType.getDescription());
 

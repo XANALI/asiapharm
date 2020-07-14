@@ -25,6 +25,7 @@ public class GoodToGoodCommand implements Converter<Good, GoodCommand> {
         }
 
         final GoodCommand goodCommand = new GoodCommand();
+        goodCommand.setId(good.getId());
         goodCommand.setName(good.getName());
         goodCommand.setDescription(good.getDescription());
         goodCommand.setPrice(good.getPrice());
