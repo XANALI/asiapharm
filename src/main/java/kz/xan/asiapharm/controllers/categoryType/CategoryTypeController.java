@@ -41,4 +41,11 @@ public class CategoryTypeController {
 
         return "categoryType/editInfo";
     }
+
+    @RequestMapping("/{id}/delete")
+    public String deleteCategoryType(@PathVariable Long id){
+        categoryTypeService.deleteById(id);
+
+        return "redirect:/category-type/show-all";
+    }
 }
