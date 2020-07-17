@@ -28,6 +28,7 @@ public class UserToUserCommand implements Converter<User, UserCommand> {
         userCommand.setEmail(user.getEmail());
         userCommand.setBirthDate(user.getBirthDate());
         userCommand.setRole(user.getRole());
+        userCommand.setImage(user.getImage());
 
         return userCommand;
     }

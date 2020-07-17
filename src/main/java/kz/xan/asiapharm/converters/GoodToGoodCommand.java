@@ -31,6 +31,7 @@ public class GoodToGoodCommand implements Converter<Good, GoodCommand> {
         goodCommand.setPrice(good.getPrice());
         goodCommand.setQuantity(good.getQuantity());
         goodCommand.setCategory(categoryToCategoryCommand.convert(good.getCategory()));
+        goodCommand.setImage(goodCommand.getImage());
 
         return goodCommand;
     }
