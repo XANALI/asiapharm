@@ -3,6 +3,7 @@ package kz.xan.asiapharm.controllers.order;
 import kz.xan.asiapharm.services.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -19,5 +20,12 @@ public class OrderController {
         model.addAttribute("orders", orderService.findAll());
 
         return "order/orders";
+    }
+
+    @RequestMapping("/{id}/delete")
+    public String deleteOrder(@PathVariable Long id){
+        orderService.deleteById(id);
+
+        return "redirect:/order/show-all";
     }
 }

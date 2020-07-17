@@ -46,4 +46,11 @@ public class CategoryController {
 
         return "redirect:show-all";
     }
+
+    @RequestMapping("/{id}/delete")
+    public String deleteCategory(@PathVariable Long id){
+        categoryService.deleteById(id);
+
+        return "redirect:/category/show-all";
+    }
 }
