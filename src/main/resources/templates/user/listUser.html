@@ -12,6 +12,9 @@
                     <a th:href="@{'/user/' + ${user.Id}}" th:text="${user.Id}">Жаропонижающие</a>
                 </div>
                 <div class="card-content">
+                    <div class="card-type">
+                        <img src="" th:src="@{'/user/' + ${user.Id} + '/image'}" width="200" height="200">
+                    </div>
                     <div class="card-type" th:text="${user.firstName}">Лекарственные средства</div>
                     <div class="card-type" th:text="${user.lastName}">Лекарственные средства</div>
                     <div class="card-type" th:text="${user.username}">Лекарственные средства</div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Image</title>
+    <!--/*/ <th:block th:include="layout/fragments.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+</head>
+<body>
+    <section>
+        <header th:replace="layout/fragments.html :: header">
+        </header>
+        <main>
+            <section class="container">
+                <div style="margin: 0 auto">
+                    <div>
+                        <h1>Upload User Image</h1>
+                    </div>
+                    <div>
+                        <form method="post" action="http:\\localhost" enctype="multipart/form-data"
+                            th:action="@{'/user/' + ${userCommand.Id} + '/upload-image'}">
+                            <label>Select File</label>
+                            <input id="imagefile" name="imagefile" type="file" class="file">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+</body>
+</html>

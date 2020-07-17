@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+    <!--/*/ <th:block th:include="layout/fragments.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+    <!--/*/ <th:block th:include="user/listUser.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+</head>
+<body>
+    <section>
+        <header th:replace="layout/fragments.html :: header">
+        </header>
+        <main>
+            <section class="container">
+                <div class="card">
+                    <form method="post" action="http:\\localhost" th:action="@{'/user/' + ${userCommand.Id} + '/editInfo'}" th:object="${userCommand}">
+                        <input th:field="*{Id}" type="hidden">
+                        <div class="card-header" th:text="${userCommand.Id}">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-description">
+                                <input type="text" th:field="*{firstName}">
+                                <input type="text" th:field="*{lastName}">
+                                <input type="text" th:field="*{username}">
+                                <input type="text" th:field="*{password}">
+                                <input type="text" th:field="${userCommand.mobileNum}">
+                                <input type="email" th:field="${userCommand.email}">
+                                <input type="text" th:field="${userCommand.birthDate}">
+                                <div>
+                                    <select th:field="*{role}">
+                                        <option th:each="roleValue : ${T(kz.xan.asiapharm.domain.ROLE).values()}"
+                                                th:value="${roleValue.name()}"
+                                                th:text="${roleValue.name()}"
+                                        ></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </section>
+</body>
+</html>
