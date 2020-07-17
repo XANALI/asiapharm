@@ -13,4 +13,5 @@ public class GoodCommand extends BaseCommand {
     private Integer price;
     private Integer quantity;
     private CategoryCommand category;
+    private Byte[] image;
 }

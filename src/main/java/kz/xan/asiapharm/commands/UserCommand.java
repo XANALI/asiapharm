@@ -19,4 +19,5 @@ public class UserCommand extends BaseCommand {
     private String email;
     private LocalDate birthDate;
     private ROLE role;
+    private Byte[] image;
 }

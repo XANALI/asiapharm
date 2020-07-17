@@ -26,6 +26,9 @@ public class Good extends BaseEntity {
     @Column(name = "quantity")
     private Integer quantity;
 
+    @Lob
+    private Byte[] image;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
