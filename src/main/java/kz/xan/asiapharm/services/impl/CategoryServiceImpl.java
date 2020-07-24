@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -29,7 +30,13 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category findById(Long aLong) {
-        return categoryRepository.findById(aLong).orElse(null);
+        Optional<Category> categoryOptional = categoryRepository.findById(aLong);
+
+        if(!categoryOptional.isPresent()){
+            //throw new RuntimeException("Category is null by ID:" + aLong);
+        }
+
+        return categoryOptional.orElse(null);
     }
 
     @Override
@@ -65,4 +72,23 @@ public class CategoryServiceImpl implements CategoryService {
 
         return toCommandConverter.convert(savedCategory);
     }
+
+    @Override
+    @Transactional
+    public CategoryCommand findCommandById(Long id) {
+        return toCommandConverter.convert(findById(id));
+    }
+
+    @Override
+    @Transactional
+    public Set<CategoryCommand> findCategoryCommands() {
+        Set<Category> categories = findAll();
+        Set<CategoryCommand> categoryCommands = new HashSet<>();
+        for(Category category : categories){
+            categoryCommands.add(toCommandConverter.convert(category));
+        }
+        return categoryCommands;
+    }
+
+
 }
