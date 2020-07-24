@@ -1,0 +1,52 @@
+.user_register {
+    background-color: #AFCFEA;
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 25px;
+    padding: 20px;
+}
+
+.register_header {
+    text-align: center;
+    font-size: 24px;
+}
+
+.register_form {
+    margin-top: 30px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.register_fields {
+    padding: 10px;
+}
+
+.register_field {
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+}
+
+.register_field label {
+    float: left;
+}
+
+.register_input {
+    float: right;
+}
+
+.role_select {
+    width: 165px;
+}
+
+.register_submit {
+    text-align: center;
+}
+
+.register_submit input {
+    font-size: 20px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}

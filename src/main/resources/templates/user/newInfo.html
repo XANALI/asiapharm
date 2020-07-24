@@ -16,15 +16,29 @@
                     <form method="post" action="http:\\localhost" th:action="@{'/user/newInfo'}" th:object="${userCommand}">
                         <div class="card-content">
                             <div class="card-description">
-                                <input type="text" th:field="*{firstName}">
-                                <input type="text" th:field="*{lastName}">
-                                <input type="text" th:field="*{username}">
-                                <input type="text" th:field="*{password}">
-                                <input type="text" th:field="*{mobileNum}">
-                                <input type="email" th:field="*{email}">
-                                <input type="text" th:field="*{birthDate}">
+                                <label for="firstName">First Name:</label>
+                                <input id="firstName" name="firstName" type="text" th:field="*{firstName}">
+
+                                <label for="lastName">Last Name:</label>
+                                <input id="lastName" name="lastName" type="text" th:field="*{lastName}">
+
+                                <label for="username">Username:</label>
+                                <input id="username" name="username" type="text" th:field="*{username}">
+
+                                <label for="password">Password:</label>
+                                <input id="password" name="password" type="text" th:field="*{password}">
+
+                                <label for="mobileNum">Mobile Num:</label>
+                                <input id="mobileNum" name="mobileNum" type="text" th:field="*{mobileNum}">
+
+                                <label for="email">Email:</label>
+                                <input id="email" name="email" type="email" th:field="*{email}">
+
+                                <label for="birthDate">Birth Date:</label>
+                                <input id="birthDate" name="birthDate" type="text" th:field="*{birthDate}">
                                 <div>
-                                    <select th:field="*{role}">
+                                    <label for="role">Role:</label>
+                                    <select id="role" name="role" th:field="*{role}">
                                         <option th:each="roleValue : ${T(kz.xan.asiapharm.domain.ROLE).values()}"
                                                 th:value="${roleValue.name()}"
                                                 th:text="${roleValue.name()}"

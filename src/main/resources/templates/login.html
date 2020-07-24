@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Slabo+27px&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/login.css" th:href="@{/css/login.css}">
+    <!--/*/ <th:block th:include="layout/fragments.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+</head>
+<body>
+    <section>
+        <header class="header" th:replace="layout/fragments.html :: header">
+            <section class="container">
+                <div class="header-top">
+                    <div class="header-top-logo">
+                        <a>AsiaPharm</a>
+                    </div>
+                    <nav class="header-top-nav">
+                        <a class="nav-link">Home</a>
+                        <a class="nav-link">Goods</a>
+                        <a class="nav-link">Categories</a>
+                        <a class="nav-link">Category Types</a>
+                        <a class="nav-link">Users</a>
+                    </nav>
+                </div>
+            </section>
+        </header>
+        <main>
+            <section class="container">
+                <div class="login_user">
+                    <div class="login_header">
+                        <h1>Login:</h1>
+                    </div>
+                    <div class="login_form">
+                        <form th:action="@{/login}" method="post">
+                            <div class="login_fields">
+                                <div class="username_field login_field">
+                                    <label for="username">Username:</label>
+                                    <input id="username" name="username" type="text">
+                                </div>
+                                <div class="password_field login_field">
+                                    <label for="password">Password:</label>
+                                    <input id="password" name="password" type="text">
+                                </div>
+                            </div>
+                            <div class="login_submit">
+                                <input value="Sign In" type="submit">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="registration_link">
+                        <a href="../templates/index.html" th:href="@{/user/newInfo}">register</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+</body>
+</html>

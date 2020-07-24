@@ -1,0 +1,25 @@
+.good-cards {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.good-card {
+    border: 2px solid #E6E7E8;
+    border-radius: 10px;
+}
+
+.good-info {
+    background-color: #AFCFEA;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.good-info div{
+    padding: 5px;
+    text-overflow: hidden;
+}
+
+.good-image {
+    text-align: center;
+    padding: 5px;
+}

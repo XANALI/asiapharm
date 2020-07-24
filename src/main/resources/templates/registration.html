@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New User</title>
+    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Slabo+27px&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/register.css" th:href="@{/css/register.css}">
+    <!--/*/ <th:block th:include="layout/fragments.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+</head>
+<body>
+    <section>
+        <header class="header" th:replace="layout/fragments.html :: header">
+            <section class="container">
+                <div class="header-top">
+                    <div class="header-top-logo">
+                        <a>AsiaPharm</a>
+                    </div>
+                    <nav class="header-top-nav">
+                        <a class="nav-link">Home</a>
+                        <a class="nav-link">Goods</a>
+                        <a class="nav-link">Categories</a>
+                        <a class="nav-link">Category Types</a>
+                        <a class="nav-link">Users</a>
+                    </nav>
+                </div>
+            </section>
+        </header>
+        <main>
+            <section class="container">
+                <div class="user_register">
+                    <div class="register_header">Registration</div>
+                    <div class="register_form">
+                        <form method="post" action="http:\\localhost" th:action="@{'/user/newInfo'}" th:object="${userCommand}">
+                                <div class="register_fields">
+                                    <div class="register_field">
+                                        <label for="firstName">First Name:</label>
+                                        <div class="register_input">
+                                            <input id="firstName" name="firstName" type="text" th:field="*{firstName}">
+                                        </div>
+                                    </div>
+                                    <div class="register_field">
+                                        <label for="lastName">Last Name:</label>
+                                        <div class="register_input">
+                                            <input id="lastName" name="lastName" type="text" th:field="*{lastName}">
+                                        </div>
+                                    </div>
+                                    <div class="register_field">
+                                        <label for="username">Username:</label>
+                                        <div class="register_input">
+                                            <input id="username" name="username" type="text" th:field="*{username}">
+                                        </div>
+                                    </div>    
+                                    <div class="register_field">
+                                        <label for="password">Password:</label>
+                                        <div class="register_input">
+                                            <input id="password" name="password" type="text" th:field="*{password}">
+                                        </div>
+                                    </div>
+                                    <div class="register_field">
+                                        <label for="mobileNum">Mobile Num:</label>
+                                        <div class="register_input">
+                                            <input id="mobileNum" name="mobileNum" type="text" th:field="*{mobileNum}">
+                                        </div>
+                                    </div>
+                                    <div class="register_field">
+                                        <label for="email">Email:</label>
+                                        <div class="register_input">
+                                            <input id="email" name="email" type="email" th:field="*{email}">
+                                        </div>
+                                    </div>
+                                    <div class="register_field">
+                                        <label for="birthDate">Birth Date:</label>
+                                        <div class="register_input">
+                                            <input id="birthDate" name="birthDate" type="text" th:field="*{birthDate}">
+                                        </div>
+                                    </div>
+
+                                    <div class="register_field">
+                                        <label for="role">Role:</label>
+                                        <div class="register_input">
+                                            <select class="role_select" id="role" name="role" th:field="*{role}">
+                                                <option th:each="roleValue : ${T(kz.xan.asiapharm.domain.ROLE).values()}"
+                                                        th:value="${roleValue.name()}"
+                                                        th:text="${roleValue.name()}"
+                                                >ADMIN</option>
+                                                <option value="">USER</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="register_submit">
+                                    <input type="submit" value="Register">
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+</body>
+</html>

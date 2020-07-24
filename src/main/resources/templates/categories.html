@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Slabo+27px&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/category/categories_style.css" th:href="@{/css/category/categories_style.css}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!--/*/ <th:block th:include="layout/fragments.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+    <!--/*/ <th:block th:include="category/listCategory.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+</head>
+    <body>
+        <section>
+            <header class="header" th:replace="layout/fragments.html :: header">
+                <section class="container">
+                    <div class="header-top">
+                        <div class="header-top-logo">
+                            <a>AsiaPharm</a>
+                        </div>
+                        <nav class="header-top-nav">
+                            <a class="nav-link">Home</a>
+                            <a class="nav-link">Goods</a>
+                            <a class="nav-link">Categories</a>
+                            <a class="nav-link">Category Types</a>
+                            <a class="nav-link">Users</a>
+                        </nav>
+                    </div>
+                </section>
+            </header>
+            <main>
+                <section class="container">
+                    <div class="select-category">
+                        <div id="category-types" class="category-types">
+                            <div class="category-type">
+                                <input type="button" id="all" class="category-type-button" value="All">
+                            </div>
+                            <div class="category-type" th:each="categoryType : ${categoryTypes}">
+                                <input type="button" th:id="${categoryType.id}" id="type-name" class="category-type-button" th:value="${categoryType.name}" value="something">
+                            </div>
+                        </div>
+                        <div id="categories-block" class="type-categories">
+                            <div class="category type-name" th:each="category : ${categories}" th:class="'category ' + ${category.categoryType.id}">
+                                <a th:text="${category.name}" th:href="'/category/'+${category.id}">alalal</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer>
+
+            </footer>
+        </section>
+        <script th:inline="javascript" src="../static/script/category_script.js" th:src="@{/script/category_script.js}">
+        </script>
+    </body>
+</html>

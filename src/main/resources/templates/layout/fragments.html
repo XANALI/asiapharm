@@ -22,6 +22,21 @@
                         <a class="nav-link">Category Types</a>
                         <a class="nav-link">Users</a>
                     </nav>
+                    <div class="header-top-user">
+                        <div class="not_autenticated" sec:authorize="isAnonymous()">
+                            <div class="login-link">
+                                <a href="/login" th:href="@{/login}">Login</a>
+                            </div>
+                            <div class="register-link">
+                                <a href="/registration" th:href="@{/registration}">Register</a>
+                            </div>
+                        </div>
+                        <div class="authenticated" sec:authorize="isAuthenticated()">
+                            <form th:action="@{/logout}" method="post">
+                                <input class="sign_out_button" type="submit" value="Sign Out"/>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </section>
         </header>

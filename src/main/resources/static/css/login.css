@@ -1,0 +1,53 @@
+.login_user {
+    background-color: #AFCFEA;
+    width: 700px;
+    padding: 25px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.login_header {
+    text-align: center;
+}
+
+.login_form {
+    margin-top: 30px;
+}
+
+.login_fields {
+    text-align: center;
+}
+
+.login_field {
+    margin-bottom: 20px;
+}
+
+.login_field input{
+    margin-left: 10px;
+}
+
+.login_submit {
+    text-align: center;
+}
+
+.login_submit input{
+    font-size: 20px;
+    color: white;
+    background-color: #AFCFEA;
+    border: none;
+}
+
+.registration_link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.registration_link a{
+    color: white;
+    text-decoration: none;
+}
+
+.registration_link:hover {
+    text-decoration: underline;
+}

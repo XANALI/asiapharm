@@ -4,6 +4,9 @@
 
 body {
     margin: 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    color: white;
 }
 
 .header {
@@ -51,4 +54,41 @@ body {
 
 .nav-link:hover {
     text-decoration: underline;
+}
+
+.not_autenticated {
+    display: inline-block;
+}
+
+.login-link {
+    float: left;
+    margin-right: 5px;
+}
+
+.register-link {
+    float: right;
+    margin-left: 5px;
+}
+
+.header-bottom {
+    margin-top: 15px;
+}
+
+.good-catalog {
+    display: flex;
+    align-items: center;
+}
+
+.catalog-button {
+    margin-left: 5px;
+    font-family:'Oswald', sans-serif;
+    font-size: 20px;
+    color: white;
+    background: none;
+    border: none;
+}
+
+.category-type-list {
+    display: none;
+    position: absolute;
 }

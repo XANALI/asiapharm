@@ -1,16 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Slabo+27px&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/index_goods.css" th:href="@{/css/index_goods.css}">
+    <!--/*/ <th:block th:include="layout/fragments.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
 </head>
 <body>
     <section>
-        <header>
-            <h1>AsiaPharm pharmacy</h1>
+        <header class="header"  th:replace="layout/fragments.html :: header">
+            <section class="container">
+                <div class="header-top">
+                    <div class="header-top-logo">
+                        <a>AsiaPharm</a>
+                    </div>
+                    <nav class="header-top-nav">
+                        <a class="nav-link">Home</a>
+                        <a class="nav-link">Goods</a>
+                        <a class="nav-link">Categories</a>
+                        <a class="nav-link">Category Types</a>
+                        <a class="nav-link">Users</a>
+                    </nav>
+                </div>
+                <div class="header-bottom">
+                    <div class="good-catalog">
+                        <span class="material-icons">menu</span>
+                        <a href="categories.html" th:href="@{/categories}" class="catalog-button">Good Catalog</a>
+                    </div>
+                    <div class="search-input">
+                        <input type="text">
+                    </div>
+                </div>
+            </section>
         </header>
         <main>
-
+            <section class="container">
+                <div class="good-cards">
+                    <div class="good-card" th:each="good : ${goods}">
+                        <div class="good-image">
+                            <img width="248" th:src="@{'/good/' + ${good.id} + '/image'}" src="../static/img/goods/ambrobene.jpg" alt="Ambrobene">
+                        </div>
+                        <div class="good-info">
+                            <div class="good-title">
+                                <a th:text="${good.name}" th:href="'good/'+${good.id}+'/showInfo'">Амбробене 15 мг/5 мл 100 мл сироп</a>
+                            </div>
+                            <div class="good-price" th:text="${good.price}">
+                                1 305 ₸
+                            </div>
+                            <div class="good-quantity" th:text="${good.quantity}">
+                                Есть в наличии
+                            </div>
+                            <div class="good-description"  th:text="${good.description}">
+                                Модель - 4030096589093,<br>Страна - Германия,<br>Производитель - Ратиофарм
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </section>
         </main>
         <footer>
 
