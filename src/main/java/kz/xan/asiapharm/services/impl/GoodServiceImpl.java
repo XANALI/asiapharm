@@ -1,19 +1,27 @@
 package kz.xan.asiapharm.services.impl;
 
+import kz.xan.asiapharm.commands.GoodCommand;
+import kz.xan.asiapharm.converters.GoodCommandToGood;
+import kz.xan.asiapharm.converters.GoodToGoodCommand;
 import kz.xan.asiapharm.domain.Good;
 import kz.xan.asiapharm.repositories.GoodRepository;
 import kz.xan.asiapharm.services.GoodService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
 @Service
 public class GoodServiceImpl implements GoodService {
     private final GoodRepository goodRepository;
+    private final GoodToGoodCommand goodToGoodCommand;
+    private final GoodCommandToGood goodCommandToGood;
 
-    public GoodServiceImpl(GoodRepository goodRepository) {
+    public GoodServiceImpl(GoodRepository goodRepository, GoodToGoodCommand goodToGoodCommand, GoodCommandToGood goodCommandToGood) {
         this.goodRepository = goodRepository;
+        this.goodToGoodCommand = goodToGoodCommand;
+        this.goodCommandToGood = goodCommandToGood;
     }
 
     @Override
@@ -42,5 +50,26 @@ public class GoodServiceImpl implements GoodService {
     @Override
     public void deleteById(Long aLong) {
         goodRepository.deleteById(aLong);
+    }
+
+    @Override
+    @Transactional
+    public Set<GoodCommand> findAllCommands() {
+        Set<GoodCommand> goodCommands = new HashSet<>();
+        for(Good good : findAll()){
+            goodCommands.add(goodToGoodCommand.convert(good));
+        }
+        return goodCommands;
+    }
+
+    @Override
+    @Transactional
+    public GoodCommand findCommandByID(Long id) {
+        Good good = findById(id);
+        if(good == null){
+            throw new RuntimeException("Good By ID " + id + " is null!");
+        }
+
+        return goodToGoodCommand.convert(good);
     }
 }
