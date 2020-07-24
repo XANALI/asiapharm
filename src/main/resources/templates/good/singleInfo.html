@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>UserInfo</title>
+    <link rel="stylesheet" href="../../static/css/good/single_info.css" th:href="@{/css/good/single_info.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Slabo+27px&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!--/*/ <th:block th:include="layout/fragments.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+</head>
+<body>
+    <section>
+        <header class="header" th:replace="layout/fragments.html :: header">
+            <section class="container">
+                <div class="header-top">
+                    <div class="header-top-logo">
+                        <a>AsiaPharm</a>
+                    </div>
+                    <nav class="header-top-nav">
+                        <a class="nav-link">Home</a>
+                        <a class="nav-link">Goods</a>
+                        <a class="nav-link">Categories</a>
+                        <a class="nav-link">Category Types</a>
+                        <a class="nav-link">Users</a>
+                    </nav>
+                </div>
+            </section>
+        </header>
+        <main>
+            <section class="container">
+                <div class="single_info">
+                    <div class="info-header" th:text="${goodCommand.Id}">1</div>
+                    <div class="info-full">
+                        <div class="info-content">
+                            <div class="info-img">
+                                <img src="../../static/img/goods/ambrobene.jpg" th:src="@{'/good/' + ${goodCommand.Id} + '/image'}" width="200">
+                            </div>
+                            <div class="info-lines">
+                                <div class="info_name info_line" th:text="${goodCommand.name}">Амбробене 15 мг/5 мл 100 мл сироп</div>
+                                <div class="info_price info_line" th:text="${goodCommand.price}">1 305 ₸</div>
+                                <div class="info_qunatity info_line" th:text="${goodCommand.quantity}">Есть в наличии</div>
+                                <div class="info_description info_line" th:text="${goodCommand.description}">Модель - 4030096589093,<br>
+                                    Страна - Германия,<br>
+                                    Производитель - Ратиофарм</div>
+                            </div>
+                        </div>
+                        <div class="info-options">
+                            <form method="get" action="/order/show-all" th:action="@{/order/newOrder}">
+                                <input name="good_id" type="hidden" th:value="${goodCommand.Id}">
+                                <div class="info-quantity info-option">
+                                    <label for="quantity">Quantity</label>
+                                    <input type="number" class="quantity-input" name="quantity" id="quantity" min="1" max="100" value="1">
+                                </div>
+                                <div class="order-button info-option">
+                                    <input type="submit" value="Order">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+</body>
+</html>

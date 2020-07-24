@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Good</title>
+    <!--/*/ <th:block th:include="layout/fragments.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+    <!--/*/ <th:block th:include="user/listUser.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+</head>
+<body>
+    <section>
+        <header th:replace="layout/fragments.html :: header">
+        </header>
+        <main>
+            <section class="container">
+                <div class="card">
+                    <form method="post" action="http:\\localhost" th:action="@{'/good/newInfo'}" th:object="${goodCommand}">
+                        <div class="card-content">
+                            <div class="card-description">
+                                <input type="text" th:field="*{name}">
+                                <input type="text" th:field="*{price}">
+                                <input type="text" th:field="*{quantity}">
+                                <input type="text" th:field="*{description}">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </section>
+</body>
+</html>

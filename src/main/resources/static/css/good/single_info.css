@@ -1,0 +1,49 @@
+.single_info {
+    padding: 25px;
+    margin: 0 auto;
+    width: 800px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+}
+
+.info-header {
+    background-color: #AFCFEA;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.info-full {
+    background-color: #DCE5E7;
+    padding: 40px;
+}
+
+.info-content {
+    width: 100%;
+    display: inline-block;
+}
+
+.info-img {
+    float: left;
+}
+
+.info-lines { 
+    color: #2F3640;
+    float: right;
+    margin-right: 40px;
+}
+
+.info_line {
+    margin-bottom: 7px;
+}
+
+.info-options div{
+    text-align: center;
+}
+
+.info-option {
+    margin-top: 10px;
+}
+
+.order-button input{
+    font-size: 20px;
+}
