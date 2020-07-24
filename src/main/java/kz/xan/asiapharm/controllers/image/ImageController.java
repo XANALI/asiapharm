@@ -1,7 +1,11 @@
 package kz.xan.asiapharm.controllers.image;
 
+import kz.xan.asiapharm.commands.GoodCommand;
 import kz.xan.asiapharm.commands.UserCommand;
+import kz.xan.asiapharm.converters.GoodToGoodCommand;
 import kz.xan.asiapharm.converters.UserToUserCommand;
+import kz.xan.asiapharm.domain.Good;
+import kz.xan.asiapharm.services.GoodService;
 import kz.xan.asiapharm.services.ImageService;
 import kz.xan.asiapharm.services.UserService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -20,11 +24,15 @@ public class ImageController {
     private final UserService userService;
     private final ImageService imageService;
     private final UserToUserCommand toUserCommand;
+    private final GoodService goodService;
+    private final GoodToGoodCommand toGoodCommand;
 
-    public ImageController(UserService userService, ImageService imageService, UserToUserCommand toUserCommand) {
+    public ImageController(UserService userService, ImageService imageService, UserToUserCommand toUserCommand, GoodService goodService, GoodToGoodCommand toGoodCommand) {
         this.userService = userService;
         this.imageService = imageService;
         this.toUserCommand = toUserCommand;
+        this.goodService = goodService;
+        this.toGoodCommand = toGoodCommand;
     }
 
     @GetMapping("/user/{id}/upload-image")
@@ -49,6 +57,37 @@ public class ImageController {
             byte[] byteArray = new byte[userCommand.getImage().length];
             int i = 0;
             for(byte wrappedByte : userCommand.getImage()){
+                byteArray[i++] = wrappedByte;
+            }
+            response.setContentType("image/jpeg");
+            InputStream is = new ByteArrayInputStream(byteArray);
+            IOUtils.copy(is, response.getOutputStream());
+        }
+    }
+
+    @GetMapping("/good/{id}/upload-image")
+    public String getUploadGoodImage(@PathVariable Long id, Model model){
+        model.addAttribute("goodCommand", toGoodCommand.convert(goodService.findById(id)));
+
+        return "good/upload-image";
+    }
+
+    @PostMapping("/good/{id}/upload-image")
+    public String postUploadGoodImage(@PathVariable Long id, @RequestParam("imagefile") MultipartFile file){
+        imageService.saveGoodImageFile(id, file);
+
+        return "redirect:/good/" + id + "/showInfo";
+    }
+
+    @RequestMapping("/good/{id}/image")
+    public void getGoodImage(@PathVariable Long id, HttpServletResponse response) throws IOException {
+        Good good = goodService.findById(id);
+        GoodCommand goodCommand = toGoodCommand.convert(good);
+
+        if(goodCommand.getImage() != null){
+            byte[] byteArray = new byte[goodCommand.getImage().length];
+            int i = 0;
+            for(byte wrappedByte : goodCommand.getImage()){
                 byteArray[i++] = wrappedByte;
             }
             response.setContentType("image/jpeg");
