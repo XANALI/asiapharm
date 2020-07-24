@@ -30,7 +30,7 @@ public class UserController {
 
     @RequestMapping("/show-all")
     public String listUsers(Model model){
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userService.findAllCommands());
 
         return "user/users";
     }
@@ -53,7 +53,7 @@ public class UserController {
     public String newUser(Model model){
         model.addAttribute("userCommand", new UserCommand());
 
-        return "user/newInfo";
+        return "registration";
     }
 
     @PostMapping("/{id}/editInfo")
