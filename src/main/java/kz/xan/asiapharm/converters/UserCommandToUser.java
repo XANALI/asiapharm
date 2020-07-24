@@ -7,6 +7,8 @@ import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
+
 @Component
 public class UserCommandToUser implements Converter<UserCommand, User> {
 
@@ -26,7 +28,7 @@ public class UserCommandToUser implements Converter<UserCommand, User> {
         user.setMobileNum(userCommand.getMobileNum());
         user.setEmail(userCommand.getEmail());
         user.setBirthDate(userCommand.getBirthDate());
-        user.setRole(userCommand.getRole());
+        user.setRoles(Collections.singleton(userCommand.getRole()));
 
         return user;
     }

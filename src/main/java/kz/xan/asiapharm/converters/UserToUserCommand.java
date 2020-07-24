@@ -27,7 +27,7 @@ public class UserToUserCommand implements Converter<User, UserCommand> {
         userCommand.setMobileNum(user.getMobileNum());
         userCommand.setEmail(user.getEmail());
         userCommand.setBirthDate(user.getBirthDate());
-        userCommand.setRole(user.getRole());
+        userCommand.setRole(user.getRoles().stream().findFirst().orElse(null));
         userCommand.setImage(user.getImage());
 
         return userCommand;
