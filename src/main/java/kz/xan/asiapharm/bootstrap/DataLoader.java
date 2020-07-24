@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.Collections;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -33,7 +34,7 @@ public class DataLoader implements CommandLineRunner {
         user1.setPassword("alikhan01");
         user1.setBirthDate(LocalDate.now());
         user1.setEmail("ryskhan.ali@gmail.com");
-        user1.setRole(ROLE.ADMIN);
+        user1.setRoles(Collections.singleton(ROLE.ROLE_ADMIN));
         user1.setMobileNum("87081843486");
 
         userService.save(user1);
@@ -44,12 +45,38 @@ public class DataLoader implements CommandLineRunner {
 
         categoryTypeService.save(categoryType);
 
+        CategoryType vitamins = new CategoryType();
+        vitamins.setName("Витамины и бады");
+        vitamins.setDescription("Витамины");
+
+        categoryTypeService.save(vitamins);
+
+        CategoryType fashion = new CategoryType();
+        fashion.setName("Красота и гигиена");
+        fashion.setDescription("Крема и тд");
+
+        categoryTypeService.save(fashion);
+
         Category category = new Category();
         category.setName("Жаропонижающие");
         category.setDescription("smth");
         category.setCategoryType(categoryType);
 
         categoryService.save(category);
+
+        Category sportAndFitness = new Category();
+        sportAndFitness.setName("Sport and Fitness");
+        sportAndFitness.setDescription("sport");
+        sportAndFitness.setCategoryType(vitamins);
+
+        categoryService.save(sportAndFitness);
+
+        Category protection = new Category();
+        protection.setName("Protection from nasekomiy");
+        protection.setDescription("protect blen");
+        protection.setCategoryType(fashion);
+
+        categoryService.save(protection);
 
         Good good = new Good();
         good.setName("Nurofen");
