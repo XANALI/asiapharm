@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Slabo+27px&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/order/newOrder.css" th:href="@{/css/order/newOrder.css}">
+    <!--/*/ <th:block th:include="layout/fragments.html :: headerfiles"> /*/--><!--/*/ </th:block> /*/-->
+</head>
+<body>
+    <section>
+        <header class="header" th:replace="layout/fragments.html :: header">
+            <section class="container">
+                <div class="header-top">
+                    <div class="header-top-logo">
+                        <a>AsiaPharm</a>
+                    </div>
+                    <nav class="header-top-nav">
+                        <a class="nav-link">Home</a>
+                        <a class="nav-link">Goods</a>
+                        <a class="nav-link">Categories</a>
+                        <a class="nav-link">Category Types</a>
+                        <a class="nav-link">Users</a>
+                    </nav>
+                </div>
+            </section>
+        </header>
+        <main>
+            <section class="container">
+                <div class="order-card">
+                    <div class="order-header">
+                        Order
+                    </div>
+                    <div class="order-full">
+                        <div class="order-content">
+                            <div class="good-info">
+                                <div class="good-img">
+                                    <img src="../../static/img/goods/ambrobene.jpg" th:src="@{'/good/' + ${goodCommand.Id} + '/image'}" height="200">
+                                </div>
+                                <div class="good-lines">
+                                    <div class="good_name info_line" th:text="${goodCommand.name}">Амбробене 15 мг/5 мл 100 мл сироп</div>
+                                    <div class="good_price info_line" th:text="${goodCommand.price}">1 305 ₸</div>
+                                    <div class="good_description " th:text="${goodCommand.description}">Модель - 4030096589093,<br>
+                                        Страна - Германия,<br>
+                                        Производитель - Ратиофарм</div>
+                                </div>
+                                <div class="request-quantity">
+                                    <span th:text="${quantity}">200</span>
+                                </div>
+                            </div>
+                            <div class="customer-info">
+                                <div class="customer-img">
+                                    <img src="../../static/img/users/alikhan.jpg" th:src="@{'/user/' + ${userCommand.Id} + '/image'}" height="200">
+                                </div>
+                                <div class="customer-lines">
+                                    <div class="customer-full-name">
+                                        <div class="customer-first-name info_line" th:text="${userCommand.firstName}">Alikhan</div>
+                                        <div class="customer-last-name info_line" th:text="${userCommand.lastName}">Ryskhan</div>
+                                    </div>
+                                    <div class="customer-username info_line" th:text="${userCommand.username}">XAN</div>
+                                    <div class="customer-mobile info_line" th:text="${userCommand.mobileNum}">87081843486</div>
+                                    <div class="customer-email info_line" th:text="${userCommand.email}">ryskhan.ali@gmail.com</div>
+                                    <div class="customer-birth-date info_line" th:text="${userCommand.birthDate}">23.09.01</div>
+                                    <div class="customer-role info_line" th:text="${userCommand.role}">ADMIN</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-submit">
+                            <form th:action="@{/order/newOrder}" method="post">
+                                <input type="hidden" name="good_id" value="" th:value="${goodCommand.Id}">
+                                <input type="hidden" name="user_id" value="" th:value="${userCommand.Id}">
+                                <input type="hidden" name="good_quantity" value="" th:value="${quantity}">
+                                <input class="submit-button" type="submit" value="Submit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+</body>
+</html>

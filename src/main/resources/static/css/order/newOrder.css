@@ -1,0 +1,80 @@
+.order-card {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.order-header {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px;
+    background-color: #DCE5E7;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.order-full {
+    background-color: #AFCFEA;
+    padding: 20px;
+}
+
+.order-content {
+    display: inline-block;
+    width: 100%;
+}
+
+.good-info {
+    float: left;
+    width: 300px;
+}
+
+.info_line {
+    margin-bottom: 7px;
+}
+
+.good-img {
+    text-align: center;
+}
+
+.good-lines {
+    padding-left: 20px;
+}
+
+.request-quantity {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.customer-info {
+    float: right;
+    width: 300px;
+}
+
+.customer-img {
+    text-align: center;
+}
+
+.customer-full-name {
+    display: inline-block;
+}
+
+.customer-first-name {
+    float: left;
+    margin-right: 5px;
+}
+
+.customer-last-name {
+    float: right;
+    margin-left: 5px;
+}
+
+.customer-lines {
+    text-align: center;
+}
+
+.order-submit {
+    width: 80px;
+    margin: 0 auto;
+}
+
+.submit-button {
+    font-size: 20px;
+}
