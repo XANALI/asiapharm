@@ -1,15 +1,21 @@
 package kz.xan.asiapharm.services.impl;
 
+import kz.xan.asiapharm.commands.CategoryCommand;
+import kz.xan.asiapharm.converters.CategoryCommandToCategory;
+import kz.xan.asiapharm.converters.CategoryToCategoryCommand;
+import kz.xan.asiapharm.converters.CategoryTypeCommandToCategoryType;
+import kz.xan.asiapharm.converters.CategoryTypeToCategoryTypeCommand;
 import kz.xan.asiapharm.domain.Category;
 import kz.xan.asiapharm.repositories.CategoryRepository;
+import kz.xan.asiapharm.repositories.CategoryTypeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -20,17 +26,30 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class CategoryServiceImplTest {
 
+    CategoryServiceImpl categoryService;
+    CategoryToCategoryCommand categoryToCategoryCommand;
+    CategoryCommandToCategory categoryCommandToCategory;
+
     @Mock
     CategoryRepository categoryRepository;
 
-    @InjectMocks
-    CategoryServiceImpl categoryService;
+    @Mock
+    CategoryTypeRepository categoryTypeRepository;
+
+    @Mock
+    CategoryTypeToCategoryTypeCommand categoryTypeToCategoryTypeCommand;
+
+    @Mock
+    CategoryTypeCommandToCategoryType categoryTypeCommandToCategoryType;
 
     Category category;
 
     @BeforeEach
     void setUp() {
         category = Category.builder().Id(1L).build();
+        categoryToCategoryCommand = new CategoryToCategoryCommand(categoryTypeToCategoryTypeCommand);
+        categoryCommandToCategory = new CategoryCommandToCategory(categoryTypeCommandToCategoryType);
+        categoryService = new CategoryServiceImpl(categoryRepository, categoryTypeRepository, categoryCommandToCategory, categoryToCategoryCommand);
     }
 
     @Test
@@ -44,6 +63,17 @@ class CategoryServiceImplTest {
     }
 
     @Test
+    void findCommandById() {
+        Optional<Category> categoryOptional = Optional.of(category);
+        when(categoryRepository.findById(anyLong())).thenReturn(categoryOptional);
+
+        CategoryCommand categoryCommand = categoryService.findCommandById(1L);
+
+        assertNotNull(categoryCommand);
+        verify(categoryRepository, times(1)).findById(anyLong());
+    }
+
+    @Test
     void save() {
         Category cat = Category.builder().Id(2L).build();
         when(categoryRepository.save(any())).thenReturn(category);
@@ -51,6 +81,17 @@ class CategoryServiceImplTest {
         Category returnedCat = categoryService.save(cat);
 
         assertNotNull(returnedCat);
+        verify(categoryRepository, times(1)).save(any());
+    }
+
+    @Test
+    void saveCategoryCommand() {
+        when(categoryRepository.save(any())).thenReturn(category);
+        CategoryCommand categoryCommand = new CategoryCommand();
+        categoryCommand.setId(1L);
+
+        CategoryCommand saveCategoryCommand = categoryService.saveCategoryCommand(categoryCommand);
+        assertNotNull(categoryCommand);
         verify(categoryRepository, times(1)).save(any());
     }
 
