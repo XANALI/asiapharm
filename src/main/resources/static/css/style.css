@@ -60,6 +60,16 @@ body {
     display: inline-block;
 }
 
+.sing-link{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.sing-link:hover{
+    text-decoration: underline;
+}
+
 .login-link {
     float: left;
     margin-right: 5px;
@@ -70,14 +80,75 @@ body {
     margin-left: 5px;
 }
 
+.sign_out_button {
+    outline: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+}
+
+.sign_out_button:hover {
+    text-decoration: underline;
+}
+
 .header-bottom {
     margin-top: 15px;
+    padding-bottom: 10px;
+}
+
+.search-good {
+    display: flex;
+    flex-direction: row;
 }
 
 .good-catalog {
     display: flex;
     align-items: center;
 }
+
+.good-search {
+    margin-left: 150px;
+}
+
+.search-form {
+    display: flex;
+}
+
+.search-input {
+    display: flex;
+    align-items: center;
+}
+
+.input__inner{
+    width: 350px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    color: #414042;
+}
+
+.input__inner:focus{
+    outline: none;
+    border: 1px solid #E6E7E8;
+}
+
+.search-button {
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.button__inner {
+    border: none;
+    background-color: white;
+    color: #414042;
+    height: 30px;
+    border-radius: 5px;
+}
+
 
 .catalog-button {
     margin-left: 5px;
@@ -86,9 +157,4 @@ body {
     color: white;
     background: none;
     border: none;
-}
-
-.category-type-list {
-    display: none;
-    position: absolute;
 }

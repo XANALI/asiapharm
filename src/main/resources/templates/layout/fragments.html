@@ -11,7 +11,7 @@
     <section>
         <header class="header" th:fragment="header">
             <section class="container">
-                <div class="header-top">
+                <div class="header-top" th:fragment="header-top">
                     <div class="header-top-logo">
                         <a>AsiaPharm</a>
                     </div>
@@ -25,10 +25,10 @@
                     <div class="header-top-user">
                         <div class="not_autenticated" sec:authorize="isAnonymous()">
                             <div class="login-link">
-                                <a href="/login" th:href="@{/login}">Login</a>
+                                <a class="sing-link" href="/login" th:href="@{/login}">Login</a>
                             </div>
                             <div class="register-link">
-                                <a href="/registration" th:href="@{/registration}">Register</a>
+                                <a class="sing-link" href="/registration" th:href="@{/registration}">Register</a>
                             </div>
                         </div>
                         <div class="authenticated" sec:authorize="isAuthenticated()">

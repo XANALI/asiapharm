@@ -12,9 +12,9 @@
 </head>
 <body>
     <section>
-        <header class="header"  th:replace="layout/fragments.html :: header">
+        <header class="header">
             <section class="container">
-                <div class="header-top">
+                <div class="header-top" th:replace="layout/fragments.html :: header-top">
                     <div class="header-top-logo">
                         <a>AsiaPharm</a>
                     </div>
@@ -27,12 +27,21 @@
                     </nav>
                 </div>
                 <div class="header-bottom">
-                    <div class="good-catalog">
-                        <span class="material-icons">menu</span>
-                        <a href="categories.html" th:href="@{/categories}" class="catalog-button">Good Catalog</a>
-                    </div>
-                    <div class="search-input">
-                        <input type="text">
+                    <div class="search-good">
+                        <div class="good-catalog">
+                            <span class="material-icons">menu</span>
+                            <a href="categories.html" th:href="@{/categories}" class="catalog-button">Good Catalog</a>
+                        </div>
+                        <div class="good-search">
+                            <form class="search-form" action="" method="post">
+                                <div class="search-input">
+                                    <input class="input__inner" type="text" placeholder="Here:">
+                                </div>
+                                <div class="search-button">
+                                    <input class="button__inner" type="submit" value="Search">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </section>
