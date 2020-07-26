@@ -72,4 +72,30 @@ public class GoodServiceImpl implements GoodService {
 
         return goodToGoodCommand.convert(good);
     }
+
+    @Override
+    public Set<Good> findGoodsByNameContaining(String name) {
+        Set<Good> goods = goodRepository.findGoodsByNameContainingIgnoreCase(name);
+        if(goods.size() == 0){
+            throw new RuntimeException("Goods not found");
+        }
+
+        return goods;
+    }
+
+    @Override
+    @Transactional
+    public Set<GoodCommand> findCommandsByNameContaining(String name) {
+        Set<Good> goods = findGoodsByNameContaining(name);
+        if(goods == null){
+            throw new RuntimeException("Goods not found");
+        }
+
+        Set<GoodCommand> goodCommands = new HashSet<>();
+        for(Good good : goods){
+            goodCommands.add(goodToGoodCommand.convert(good));
+        }
+
+        return goodCommands;
+    }
 }

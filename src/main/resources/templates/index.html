@@ -33,9 +33,9 @@
                             <a href="categories.html" th:href="@{/categories}" class="catalog-button">Good Catalog</a>
                         </div>
                         <div class="good-search">
-                            <form class="search-form" action="" method="post">
+                            <form class="search-form" action="" th:action="@{good/search}" method="get">
                                 <div class="search-input">
-                                    <input class="input__inner" type="text" placeholder="Here:">
+                                    <input class="input__inner" name="searchText" type="text" placeholder="Here:">
                                 </div>
                                 <div class="search-button">
                                     <input class="button__inner" type="submit" value="Search">

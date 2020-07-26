@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Set;
+
 @RequestMapping("/good")
 @Controller
 public class GoodController {
@@ -76,5 +78,13 @@ public class GoodController {
         Good savedGood = goodService.save(newGood);
 
         return "redirect:"+savedGood.getId()+"/showInfo";
+    }
+
+    @GetMapping("/search")
+    public String searchGood(@RequestParam("searchText") String searchText, Model model){
+        Set<GoodCommand> goodCommands = goodService.findCommandsByNameContaining(searchText);
+        model.addAttribute("goods", goodCommands);
+
+        return "good/goods";
     }
 }

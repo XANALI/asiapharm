@@ -6,7 +6,7 @@
 </head>
 <body>
     <section class="container" th:fragment="listGood (goods)">
-        <div class="cards">
+        <div  th:unless="${#lists.isEmpty(goods)}" class="cards">
             <div class="card" th:each="good : ${goods}">
                 <div class="card-header">
                     <a th:href="@{'/good/' + ${good.Id}}" th:text="${good.name}">Жаропонижающие</a>
@@ -23,6 +23,9 @@
                     <div class="card-type" th:text="${good.quantity}">Лекарственные средства</div>
                 </div>
             </div>
+        </div>
+        <div th:if="${#lists.isEmpty(goods)}">
+            <h1>Goods Not FOUND!</h1>
         </div>
     </section>
 </body>
