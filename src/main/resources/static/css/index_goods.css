@@ -1,12 +1,14 @@
 .good-cards {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     padding: 20px;
 }
 
 .good-card {
     border: 2px solid #E6E7E8;
     border-radius: 10px;
+    margin-bottom: 15px;
 }
 
 .good-info {
